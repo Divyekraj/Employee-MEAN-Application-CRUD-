@@ -1,0 +1,101 @@
+<div class="container py-3"> 
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Employee Management</h2>
+
+        </div>
+
+        <div class="col ml-auto text-right">
+            <button (click)="onAddEmployee()" type="button" class="btn btn-outline-success">
+                <i class="fa fa-plus"></i> Add Employee
+            </button>
+
+        </div>
+      
+
+    </div>
+
+    <hr>
+
+    <!-- Modal -->
+<div *ngIf="showModal != 0" class="row">
+  <div class="col-6">
+  <!-- <div class="modal" id="myModal" >
+     <div class="modal-dialog">helloo
+       <div class="modal-content"> -->
+   
+         <!-- Modal Header -->
+         <!-- <div class="modal-header">
+           <h4 class="modal-title">Add0 Employee</h4>
+           <button type="button" class="close" data-dismiss="modal" (click)="onCloseModal()"></button>
+         </div> --> 
+   
+         <!-- Modal body -->
+         
+           <form [formGroup]="empForm">
+            
+               <div class="form-group">
+                 <label>Enter Name</label>
+                 <input class="form-control" type="text" formControlName="name">
+                 <span class="error" *ngIf="name.invalid && name.touched"> Name is Required</span>
+ 
+               </div>
+ 
+               <div class="form-group">
+                 <label>Enter Position</label>
+                 <input class="form-control" type="text" formControlName="position">
+                 <span class="error" *ngIf="position.invalid && position.touched"> position is Required</span>
+ 
+               </div>
+ 
+               <div class="form-group">
+                 <label>Enter Department</label>
+                 <select class="custom-select" formControlName="dept">
+                   <option value="Design">Design</option>
+                   <option value="Development">Development</option>
+ 
+ 
+                 </select>
+                 
+               </div>
+             
+   
+         
+         
+         <!-- Modal footer -->
+         <!-- <div class="modal-footer"> -->
+           <button type="button" (click)="onCloseModal()" class="btn btn-danger">Close</button>
+           <button type="submit" (click)="onEmpSubmit()" class="btn btn-primary">Submit</button>
+         <!-- </div> -->
+       <!-- </div> -->
+       </form>
+   
+       </div>
+      </div>
+
+       <hr>
+
+    <div class="row">
+        <div class="col-md-4" *ngFor="let item of employees">
+            <div class="card mb-3">
+                <div class="card-body" >
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{item.position}}</h6>
+                    <span class="bagde bagde-success">{{item.dept}}</span>
+                    <hr>
+                    <button (click)="onEditEmployee(item)" type="button" class="btn btn-sm btn-outline-primary mr-2">Edit</button>
+                    <button (click)="onDeleteEmployee(item._id)" type="button" class="btn btn-sm btn-outline-denger ">Delete</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    </div>
+ 
